@@ -1,0 +1,17 @@
+0xf1 - file
+0xd1 - directory
+0xaa - symlink
+0x6f - partition
+0xdf - mountpoint
+0xb0 - block special, all the things in /dev
+
+f1 06 68 77 2e 74 78 74 00 01 b0 00 c0 a6 c8 39 0d 48 65 6c 6c 6f 20 57 6f 72 6c 64 21 0a 00 3b
+|| || |________________|   |____|   |_________| || |____________________________________|    ||
+id || ||                   ||       ||          ||                                     ||    end of entry
+   || filename             ||       ||          file size (13 bytes)                   ||
+   || (hw.txt)             ||       ||                                       file content ("Hello World!\n")
+   ||                      ||       unix epoch timestamp - little endian  
+   size of filename        ||       (969451200)
+                           ||
+                           permissions, converted from octal to hex
+                           (-rw-rw----)
